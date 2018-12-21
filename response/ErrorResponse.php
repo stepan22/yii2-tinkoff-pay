@@ -6,7 +6,7 @@
  * Time: 15:36
  */
 
-namespace chumakovanton\tinkoffPay\response;
+namespace moneyadmin\tinkoffPay\response;
 
 
 class ErrorResponse
