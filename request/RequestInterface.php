@@ -6,7 +6,7 @@
  * Time: 14:55
  */
 
-namespace chumakovanton\tinkoffPay\request;
+namespace moneyadmin\tinkoffPay\request;
 
 
 interface RequestInterface
