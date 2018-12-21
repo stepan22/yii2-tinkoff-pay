@@ -41,6 +41,8 @@ abstract class AbstractResponse implements ResponseInterface
         $error = null;
         if ($this->_response['ErrorCode'] !== '0') {
             $error = new ErrorResponse($this->_response['ErrorCode']);
+            $error->setDetails($this->getDetails());
+            $error->setMessage($this->getMessage());            
         }
         return $error;
     }
