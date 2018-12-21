@@ -6,12 +6,12 @@
  * Time: 11:24
  */
 
-namespace chumakovanton\tinkoffPay;
+namespace moneyadmin\tinkoffPay;
 
 
-use chumakovanton\tinkoffPay\request\RequestInit;
-use chumakovanton\tinkoffPay\request\RequestInterface;
-use chumakovanton\tinkoffPay\response\ResponseInit;
+use moneyadmin\tinkoffPay\request\RequestInit;
+use moneyadmin\tinkoffPay\request\RequestInterface;
+use moneyadmin\tinkoffPay\response\ResponseInit;
 use RuntimeException;
 use yii\base\Object;
 
