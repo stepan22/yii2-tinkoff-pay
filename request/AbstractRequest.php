@@ -6,7 +6,7 @@
  * Time: 15:17
  */
 
-namespace chumakovanton\tinkoffPay\request;
+namespace moneyadmin\tinkoffPay\request;
 
 /**
  * Class AbstractRequest
