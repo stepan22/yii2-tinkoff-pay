@@ -217,8 +217,13 @@ class TinkoffPay extends Object
      * @throws RuntimeException
      *
      */
-    protected function _sendRequest(string $api_url, string $postData): string
+    protected function _sendRequest(string $api_url, /*string*/ $postData): string
     {
+        
+        if (is_array($postData)) {
+            $postData = json_encode($postData);
+        }        
+        
         if ($curl = curl_init()) {
             curl_setopt($curl, CURLOPT_URL, $api_url);
             curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
@@ -228,6 +233,9 @@ class TinkoffPay extends Object
             if (!empty($postData)) {
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
             }
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+            ));            
             $out = curl_exec($curl);
             curl_close($curl);
 
