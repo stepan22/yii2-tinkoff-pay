@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: anton
- * Date: 07.09.17
- * Time: 15:34
+ * User: moneyadmin
+ * Date: 29.12.18
+ * Time: 17:26
  */
 
 namespace moneyadmin\tinkoffPay\notify;
