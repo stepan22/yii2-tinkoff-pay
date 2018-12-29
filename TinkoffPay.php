@@ -12,6 +12,7 @@ namespace moneyadmin\tinkoffPay;
 use moneyadmin\tinkoffPay\request\RequestInit;
 use moneyadmin\tinkoffPay\request\RequestInterface;
 use moneyadmin\tinkoffPay\response\ResponseInit;
+use moneyadmin\tinkoffPay\notify\NotifyInit;
 use RuntimeException;
 use yii\base\Object;
 
@@ -53,6 +54,20 @@ class TinkoffPay extends Object
     {
         return new ResponseInit($this->buildQuery('Init', $request));
     }
+
+
+    /**
+     * Initialize the callback
+     *
+     *
+     * @return NotifyInit
+     * @throws RuntimeException
+     */
+    public function initCallback(): NotifyInit
+    {
+        return new NotifyInit( $this->_secretKey );
+    }
+
 
     /**
      * Get state of payment
