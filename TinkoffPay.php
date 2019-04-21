@@ -14,7 +14,7 @@ use moneyadmin\tinkoffPay\request\RequestInterface;
 use moneyadmin\tinkoffPay\response\ResponseInit;
 use moneyadmin\tinkoffPay\notify\NotifyInit;
 use RuntimeException;
-use yii\base\Object;
+use yii\base\BaseObject;
 
 /**
  * Class TinkoffPay
@@ -27,7 +27,7 @@ use yii\base\Object;
  * @property string $secretKey
  * @property string $apiUrl
  */
-class TinkoffPay extends Object
+class TinkoffPay extends BaseObject
 {
     /**
      * @var string
