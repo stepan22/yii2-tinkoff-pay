@@ -25,7 +25,7 @@ interface NotifyInterface
      * Получить ошибку, которую вернул сервис оплаты
      * @return ErrorResponse|null
      */
-    public function getError(): ?ErrorResponse;
+    public function getError(): ?ErrorNotify;
 
     /**
      * Получить статус транзакции
