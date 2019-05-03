@@ -10,7 +10,6 @@ namespace moneyadmin\tinkoffPay\notify;
 
 
 use yii\helpers\Json;
-use moneyadmin\tinkoffPay\response\ErrorResponse;
 
 abstract class AbstractNotify implements NotifyInterface
 {
@@ -44,11 +43,11 @@ abstract class AbstractNotify implements NotifyInterface
      * Получить ошибку, которую вернул сервис оплаты
      * @return ErrorResponse|null
      */
-    public function getError(): ?ErrorResponse
+    public function getError(): ?ErrorNotify
     {
         $error = null;
         if ($this->_response['ErrorCode'] !== '0') {
-            $error = new ErrorResponse($this->_response['ErrorCode']);
+            $error = new ErrorNotify($this->_response['ErrorCode']);
             $error->setDetails($this->getDetails());
             $error->setMessage($this->getMessage());
         }
