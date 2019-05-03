@@ -40,16 +40,6 @@ class ErrorNotify
      */
     private $_error_code;
 
-    /**
-     * @var string
-     */
-    private $_message;
-
-    /**
-     * @var string
-     */
-    private $_details;
-
     public function __construct(int $errorCode)
     {
         $this->_error_code = $errorCode;
@@ -64,47 +54,7 @@ class ErrorNotify
         if (!empty(self::$error_codes[$this->_error_code])){
             return self::$error_codes[$this->_error_code];
         }
-        return $this->getMessage()
-            .'('
-            .$this->getDetails()
-            .')';
+        return $this->_error_code;
     }
-
-    /**
-     * @return null|string
-     */
-    public function getMessage(): ?string
-    {
-        return $this->_message;
-    }
-
-    /**
-     * @param string $message
-     * @return $this
-     */
-    public function setMessage(string $message): self
-    {
-        $this->_message = $message;
-        return $this;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getDetails(): ?string
-    {
-        return $this->_details;
-    }
-
-    /**
-     * @param string $details
-     * @return $this
-     */
-    public function setDetails(string $details): self
-    {
-        $this->_details = $details;
-        return $this;
-    }
-
 
 }
