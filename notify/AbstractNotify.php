@@ -172,5 +172,23 @@ abstract class AbstractNotify implements NotifyInterface
     {
         return $this->_response;
     }
+    
+    /**
+     * Краткое описание ошибки
+     * @return string|null
+     */
+    private function getMessage(): ?string
+    {
+        return $this->_response['Message'];
+    }
+
+    /**
+     * Подробное описание ошибки
+     * @return null|string
+     */
+    private function getDetails(): ?string
+    {
+        return $this->_response['Details'];
+    }    
 
 }
