@@ -10,7 +10,7 @@ namespace moneyadmin\tinkoffPay\notify;
 
 
 use yii\helpers\Json;
-use moneyadmin\tinkoffPay\response;
+use moneyadmin\tinkoffPay\response\ErrorResponse;
 
 abstract class AbstractNotify implements NotifyInterface
 {
