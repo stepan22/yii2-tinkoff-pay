@@ -48,8 +48,6 @@ abstract class AbstractNotify implements NotifyInterface
         $error = null;
         if ($this->_response['ErrorCode'] !== '0') {
             $error = new ErrorNotify($this->_response['ErrorCode']);
-            $error->setDetails($this->getDetails());
-            $error->setMessage($this->getMessage());
         }
         return $error;
     }
@@ -172,23 +170,5 @@ abstract class AbstractNotify implements NotifyInterface
     {
         return $this->_response;
     }
-    
-    /**
-     * Краткое описание ошибки
-     * @return string|null
-     */
-    private function getMessage(): ?string
-    {
-        return $this->_response['Message'];
-    }
-
-    /**
-     * Подробное описание ошибки
-     * @return null|string
-     */
-    private function getDetails(): ?string
-    {
-        return $this->_response['Details'];
-    }    
-
+      
 }
