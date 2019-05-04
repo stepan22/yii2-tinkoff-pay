@@ -41,9 +41,9 @@ abstract class AbstractNotify implements NotifyInterface
 
     /**
      * Получить ошибку, которую вернул сервис оплаты
-     * @return ErrorResponse|null
+     * @return string|null
      */
-    public function getError(): ?ErrorNotify
+    public function getError(): ?string
     {
         $error = null;
         if ($this->_response['ErrorCode'] !== '0') {
