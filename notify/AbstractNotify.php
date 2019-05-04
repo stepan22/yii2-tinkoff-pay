@@ -48,6 +48,7 @@ abstract class AbstractNotify implements NotifyInterface
         $error = null;
         if ($this->_response['ErrorCode'] !== '0') {
             $error = new ErrorNotify($this->_response['ErrorCode']);
+            return $error->getDescription();
         }
         return $error;
     }
