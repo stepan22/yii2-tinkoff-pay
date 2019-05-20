@@ -302,12 +302,12 @@ class RequestInit extends AbstractRequest
     }
 
     /**
-     * @return null|string
-     * @throws \yii\base\InvalidParamException
+     * @return array|null
      */
-    public function getData(): ?string
+    public function getData(): ?array
     {
-        return Json::encode($this->_data);
+        return $this->_data;
+//        return Json::encode($this->_data);
     }
 
     /**
