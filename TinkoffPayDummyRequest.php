@@ -6,7 +6,7 @@
  * Time: 14:41
  */
 
-namespace chumakovanton\tinkoffPay;
+namespace moneyadmin\tinkoffPay;
 
 
 class TinkoffPayDummyRequest extends TinkoffPay

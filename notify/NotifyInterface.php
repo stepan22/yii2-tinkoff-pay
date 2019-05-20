@@ -1,19 +1,19 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: anton
- * Date: 07.09.17
- * Time: 15:34
+ * User: moneyadmin
+ * Date: 29.12.18
+ * Time: 17:26
  */
 
-namespace moneyadmin\tinkoffPay\response;
+namespace moneyadmin\tinkoffPay\notify;
 
 
 /**
- * Interface ResponseInterface
- * @package chumakovanton\tinkoffPay\response
+ * Interface NotifyInterface
+ * @package chumakovanton\tinkoffPay\notify
  */
-interface ResponseInterface
+interface NotifyInterface
 {
     /**
      * Успешность операции
@@ -23,9 +23,9 @@ interface ResponseInterface
 
     /**
      * Получить ошибку, которую вернул сервис оплаты
-     * @return ErrorResponse|null
+     * @return string|null
      */
-    public function getError(): ?ErrorResponse;
+    public function getError(): ?string;
 
     /**
      * Получить статус транзакции
@@ -50,4 +50,16 @@ interface ResponseInterface
      * @return string
      */
     public function getOrderId(): ?string;
+
+    /**
+     * Сумма заказа
+     * @return string
+     */
+    public function getAmount(): ?int;
+
+    /**
+     * Массив со всеми данными
+     * @return string
+     */
+    public function getRAW(): ?array;
 }

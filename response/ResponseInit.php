@@ -6,7 +6,7 @@
  * Time: 15:34
  */
 
-namespace chumakovanton\tinkoffPay\response;
+namespace moneyadmin\tinkoffPay\response;
 
 
 class ResponseInit extends AbstractResponse

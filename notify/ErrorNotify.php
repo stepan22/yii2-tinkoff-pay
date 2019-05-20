@@ -1,15 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: anton
- * Date: 07.09.17
- * Time: 15:36
+ * User: moneyadmin
+ * Date: 29.12.18
+ * Time: 17:27
  */
 
-namespace moneyadmin\tinkoffPay\response;
+namespace moneyadmin\tinkoffPay\notify;
 
 
-class ErrorResponse
+class ErrorNotify
 {
     private static $error_codes = [
         99 => 'Воспользуйтесь другой картой, банк выпустивший карту отклонил операцию',
@@ -40,16 +40,6 @@ class ErrorResponse
      */
     private $_error_code;
 
-    /**
-     * @var string
-     */
-    private $_message;
-
-    /**
-     * @var string
-     */
-    private $_details;
-
     public function __construct(int $errorCode)
     {
         $this->_error_code = $errorCode;
@@ -64,44 +54,7 @@ class ErrorResponse
         if (!empty(self::$error_codes[$this->_error_code])){
             return self::$error_codes[$this->_error_code];
         }
-        return '';
+        return $this->_error_code;
     }
-
-    /**
-     * @return null|string
-     */
-    public function getMessage(): ?string
-    {
-        return $this->_message;
-    }
-
-    /**
-     * @param string $message
-     * @return $this
-     */
-    public function setMessage(string $message): self
-    {
-        $this->_message = $message;
-        return $this;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getDetails(): ?string
-    {
-        return $this->_details;
-    }
-
-    /**
-     * @param string $details
-     * @return $this
-     */
-    public function setDetails(string $details): self
-    {
-        $this->_details = $details;
-        return $this;
-    }
-
 
 }

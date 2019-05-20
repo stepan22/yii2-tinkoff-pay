@@ -6,7 +6,7 @@
  * Time: 14:54
  */
 
-namespace chumakovanton\tinkoffPay\request;
+namespace moneyadmin\tinkoffPay\request;
 
 
 use DateTime;

@@ -6,7 +6,7 @@
  * Time: 15:17
  */
 
-namespace chumakovanton\tinkoffPay\request;
+namespace moneyadmin\tinkoffPay\request;
 
 /**
  * Class AbstractRequest
@@ -42,7 +42,7 @@ abstract class AbstractRequest implements RequestInterface
      * Сериализовать объект
      * @return null|string
      */
-    public function serialize(): ?string
+    public function serialize(): ?array
     {
         $this->buildDataFields();
 
@@ -52,7 +52,8 @@ abstract class AbstractRequest implements RequestInterface
 
         $this->_dataFields['Token'] = $this->_generateToken();
 
-        return http_build_query($this->_dataFields);
+        return $this->_dataFields;
+        //return http_build_query($this->_dataFields);
     }
 
     /**

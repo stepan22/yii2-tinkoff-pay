@@ -6,14 +6,15 @@
  * Time: 11:24
  */
 
-namespace chumakovanton\tinkoffPay;
+namespace moneyadmin\tinkoffPay;
 
 
-use chumakovanton\tinkoffPay\request\RequestInit;
-use chumakovanton\tinkoffPay\request\RequestInterface;
-use chumakovanton\tinkoffPay\response\ResponseInit;
+use moneyadmin\tinkoffPay\request\RequestInit;
+use moneyadmin\tinkoffPay\request\RequestInterface;
+use moneyadmin\tinkoffPay\response\ResponseInit;
+use moneyadmin\tinkoffPay\notify\NotifyInit;
 use RuntimeException;
-use yii\base\Object;
+use yii\base\BaseObject;
 
 /**
  * Class TinkoffPay
@@ -26,7 +27,7 @@ use yii\base\Object;
  * @property string $secretKey
  * @property string $apiUrl
  */
-class TinkoffPay extends Object
+class TinkoffPay extends BaseObject
 {
     /**
      * @var string
@@ -53,6 +54,20 @@ class TinkoffPay extends Object
     {
         return new ResponseInit($this->buildQuery('Init', $request));
     }
+
+
+    /**
+     * Initialize the callback
+     *
+     *
+     * @return NotifyInit
+     * @throws RuntimeException
+     */
+    public function initCallback(): NotifyInit
+    {
+        return new NotifyInit( $this->_secretKey );
+    }
+
 
     /**
      * Get state of payment
@@ -217,8 +232,13 @@ class TinkoffPay extends Object
      * @throws RuntimeException
      *
      */
-    protected function _sendRequest(string $api_url, string $postData): string
+    protected function _sendRequest(string $api_url, /*string*/ $postData): string
     {
+        
+        if (is_array($postData)) {
+            $postData = json_encode($postData);
+        }        
+        
         if ($curl = curl_init()) {
             curl_setopt($curl, CURLOPT_URL, $api_url);
             curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
@@ -228,6 +248,9 @@ class TinkoffPay extends Object
             if (!empty($postData)) {
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
             }
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+            ));            
             $out = curl_exec($curl);
             curl_close($curl);
 

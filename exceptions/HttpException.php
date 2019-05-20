@@ -6,7 +6,7 @@
  * Time: 17:19
  */
 
-namespace chumakovanton\tinkoffPay\exceptions;
+namespace moneyadmin\tinkoffPay\exceptions;
 
 
 class HttpException extends \yii\web\HttpException

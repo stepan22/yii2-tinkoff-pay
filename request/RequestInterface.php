@@ -6,7 +6,7 @@
  * Time: 14:55
  */
 
-namespace chumakovanton\tinkoffPay\request;
+namespace moneyadmin\tinkoffPay\request;
 
 
 interface RequestInterface
@@ -27,5 +27,5 @@ interface RequestInterface
      * Сериализовать объект
      * @return null|string
      */
-    public function serialize(): ?string;
+    public function serialize(): ?array;
 }
