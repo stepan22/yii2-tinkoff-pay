@@ -109,6 +109,7 @@ class RequestInit extends AbstractRequest
      */
     public function __construct(string $orderId, int $amount)
     {
+        if (is_null($this->_data)) $this->_data = []; // Фиксим проблему с count($this->_data)
         $this->setOrderId($orderId);
         $this->setAmount($amount);
     }
