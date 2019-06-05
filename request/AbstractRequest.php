@@ -6,7 +6,7 @@
  * Time: 15:17
  */
 
-namespace moneyadmin\tinkoffPay\request;
+namespace chumakovanton\tinkoffPay\request;
 
 /**
  * Class AbstractRequest
@@ -61,13 +61,10 @@ abstract class AbstractRequest implements RequestInterface
     private function _generateToken(): ?string
     {
         $token = '';
-        $fields = $this->_dataFields;
-        $fields['Password'] = $this->_secretKey;
-        ksort($fields);
-        foreach ($fields as $field) {
-            if (!is_array($field)) {
-                $token .= $field;
-            }
+        $this->_dataFields['Password'] = $this->_secretKey;
+        ksort($this->_dataFields);
+        foreach ($this->_dataFields as $field) {
+            $token .= $field;
         }
 
         return hash('sha256', $token);
