@@ -42,7 +42,7 @@ abstract class AbstractRequest implements RequestInterface
      * Сериализовать объект
      * @return null|string
      */
-    public function serialize(): ?array
+    public function serialize(): ?string
     {
         $this->buildDataFields();
 
@@ -51,9 +51,7 @@ abstract class AbstractRequest implements RequestInterface
         unset($this->_dataFields['Token']);
 
         $this->_dataFields['Token'] = $this->_generateToken();
-
-        return $this->_dataFields;
-        //return http_build_query($this->_dataFields);
+        return json_encode($this->_dataFields);
     }
 
     /**
