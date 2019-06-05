@@ -302,4 +302,12 @@ class TinkoffPay extends BaseObject
     {
         return $this->_api_url;
     }
+    
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->_secretKey;
+    }
 }
