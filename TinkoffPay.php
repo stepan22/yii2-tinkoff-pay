@@ -6,7 +6,7 @@
  * Time: 11:24
  */
 
-namespace moneyadmin\tinkoffPay;
+namespace chumakovanton\tinkoffPay;
 
 
 use moneyadmin\tinkoffPay\request\RequestInit;
