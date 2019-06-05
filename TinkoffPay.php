@@ -245,12 +245,14 @@ class TinkoffPay extends BaseObject
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt( $curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+
+
             if (!empty($postData)) {
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
             }
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-            ));            
             $out = curl_exec($curl);
             curl_close($curl);
 
