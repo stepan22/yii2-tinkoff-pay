@@ -286,7 +286,7 @@ class TinkoffPay extends BaseObject
     /**
      * @return string
      */
-    protected function getPassword(): string
+    public function getPassword(): string
     {
         return $this->_secretKey;
     }
