@@ -9,7 +9,7 @@
 namespace chumakovanton\tinkoffPay\request;
 
 
-use use DateTime;
+use DateTime;
 use yii\helpers\Json;
 
 class RequestInit extends AbstractRequest
