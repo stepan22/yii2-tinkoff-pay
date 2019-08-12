@@ -9,7 +9,7 @@
 namespace chumakovanton\tinkoffPay\request;
 
 
-use DateTime;
+use use DateTime;
 use yii\helpers\Json;
 
 class RequestInit extends AbstractRequest
@@ -79,6 +79,13 @@ class RequestInit extends AbstractRequest
      * @var string(1)
      */
     private $_recurrent;
+
+    /**
+     * Идентификатор для выполнения рекуррентных платежей
+     * для использования в методе Charge
+     * @var int(20)
+     */
+    private $_rebillId;
 
     /**
      * Cрок жизни ссылки.
@@ -178,7 +185,8 @@ class RequestInit extends AbstractRequest
      */
     public function addData(string $key, string $value): self
     {
-        if (empty($key) || (count($this->_data) > 20))
+        $countData = is_array($this->_data) ? count($this->_data) : 1;
+        if (empty($key) || ($countData > 20))
         {
             return $this;
         }
@@ -283,6 +291,16 @@ class RequestInit extends AbstractRequest
     }
 
     /**
+     * @param int $rebillId
+     * @return self
+     */
+    public function setRebillId(int $rebillId): self
+    {
+        $this->_rebillId = $rebillId;
+        return $this;
+    }
+
+    /**
      * @param DateTime $redirectDueDate
      * @return self
      */
@@ -301,12 +319,11 @@ class RequestInit extends AbstractRequest
     }
 
     /**
-     * @return null|string
-     * @throws \yii\base\InvalidParamException
+     * @return array|null
      */
-    public function getData(): ?string
+    public function getData(): ?array
     {
-        return Json::encode($this->_data);
+        return $this->_data;
     }
 
     /**
@@ -324,7 +341,6 @@ class RequestInit extends AbstractRequest
     {
         return $this->_amount;
     }
-
     /**
      * @return null|string
      */
@@ -372,4 +388,13 @@ class RequestInit extends AbstractRequest
     {
         return $this->_recurrent;
     }
+
+    /**
+     * @return null|int
+     */
+    public function getRebillId(): ?int
+    {
+        return $this->_rebillId;
+    }
+
 }
