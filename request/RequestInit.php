@@ -108,18 +108,7 @@ class RequestInit extends AbstractRequest
      * @var array
      */
     private $_data;
-
-    /**
-     * RequestInit constructor.
-     * @param string $orderId Номер заказа в системе Продавца
-     * @param int $amount Сумма в копейках
-     */
-    public function __construct(string $orderId, int $amount)
-    {
-        $this->setOrderId($orderId);
-        $this->setAmount($amount);
-    }
-
+    
     /**
      * Функция заполняет свойство $_dataFields значениями полей запроса
      */
@@ -154,6 +143,9 @@ class RequestInit extends AbstractRequest
         }
         if (null !== $this->_data) {
             $this->_dataFields['DATA'] = $this->getData();
+        }
+        if (null !== $this->_rebillId) {
+            $this->_dataFields['RebillId'] = $this->getRebillId();
         }
     }
 
