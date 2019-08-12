@@ -6,7 +6,7 @@
  * Time: 14:54
  */
 
-namespace moneyadmin\tinkoffPay\request;
+namespace chumakovanton\tinkoffPay\request;
 
 
 use DateTime;
@@ -109,7 +109,6 @@ class RequestInit extends AbstractRequest
      */
     public function __construct(string $orderId, int $amount)
     {
-        if (is_null($this->_data)) $this->_data = []; // Фиксим проблему с count($this->_data)
         $this->setOrderId($orderId);
         $this->setAmount($amount);
     }
@@ -302,12 +301,12 @@ class RequestInit extends AbstractRequest
     }
 
     /**
-     * @return array|null
+     * @return null|string
+     * @throws \yii\base\InvalidParamException
      */
-    public function getData(): ?array
+    public function getData(): ?string
     {
-        return $this->_data;
-//        return Json::encode($this->_data);
+        return Json::encode($this->_data);
     }
 
     /**

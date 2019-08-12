@@ -6,13 +6,12 @@
  * Time: 11:24
  */
 
-namespace moneyadmin\tinkoffPay;
+namespace chumakovanton\tinkoffPay;
 
 
-use moneyadmin\tinkoffPay\request\RequestInit;
-use moneyadmin\tinkoffPay\request\RequestInterface;
-use moneyadmin\tinkoffPay\response\ResponseInit;
-use moneyadmin\tinkoffPay\notify\NotifyInit;
+use chumakovanton\tinkoffPay\request\RequestInit;
+use chumakovanton\tinkoffPay\request\RequestInterface;
+use chumakovanton\tinkoffPay\response\ResponseInit;
 use RuntimeException;
 use yii\base\BaseObject;
 
@@ -54,20 +53,6 @@ class TinkoffPay extends BaseObject
     {
         return new ResponseInit($this->buildQuery('Init', $request));
     }
-
-
-    /**
-     * Initialize the callback
-     *
-     *
-     * @return NotifyInit
-     * @throws RuntimeException
-     */
-    public function initCallback(): NotifyInit
-    {
-        return new NotifyInit( $this->_secretKey );
-    }
-
 
     /**
      * Get state of payment
@@ -190,7 +175,6 @@ class TinkoffPay extends BaseObject
     protected function buildQuery(string $path, RequestInterface $request): string
     {
         $url = $this->_api_url;
-
         $url = $this->_combineUrl($url, $path);
 
         $postData = $request->setSecretKey($this->_secretKey)
@@ -232,13 +216,9 @@ class TinkoffPay extends BaseObject
      * @throws RuntimeException
      *
      */
-    protected function _sendRequest(string $api_url, /*string*/ $postData): string
+    protected function _sendRequest(string $api_url, string $postData): string
     {
-        
-        if (is_array($postData)) {
-            $postData = json_encode($postData);
-        }        
-        
+
         if ($curl = curl_init()) {
             curl_setopt($curl, CURLOPT_URL, $api_url);
             curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
@@ -302,7 +282,7 @@ class TinkoffPay extends BaseObject
     {
         return $this->_api_url;
     }
-    
+
     /**
      * @return string
      */
