@@ -88,6 +88,12 @@ class RequestInit extends AbstractRequest
     private $_rebillId;
 
     /**
+     * Уникальный идентификатор транзакции в системе Банка
+     * @var int(20)
+     */
+    private $_paymentId;
+
+    /**
      * Cрок жизни ссылки.
      * В случае, если текущая дата превышает дату переданную в данном параметре,
      * ссылка для оплаты становится недоступной и платёж выполнить нельзя.
@@ -146,6 +152,9 @@ class RequestInit extends AbstractRequest
         }
         if (null !== $this->_rebillId) {
             $this->_dataFields['RebillId'] = $this->getRebillId();
+        }
+        if (null !== $this->_paymentId) {
+            $this->_dataFields['PaymentId'] = $this->getPaymentId();
         }
     }
 
@@ -293,6 +302,16 @@ class RequestInit extends AbstractRequest
     }
 
     /**
+     * @param int $paymentId
+     * @return self
+     */
+    public function setPaymentId(int $paymentId): self
+    {
+        $this->_paymentId = $paymentId;
+        return $this;
+    }
+
+    /**
      * @param DateTime $redirectDueDate
      * @return self
      */
@@ -387,6 +406,14 @@ class RequestInit extends AbstractRequest
     public function getRebillId(): ?int
     {
         return $this->_rebillId;
+    }
+
+    /**
+     * @return null|int
+     */
+    public function getPaymentId(): ?int
+    {
+        return $this->_paymentId;
     }
 
 }
