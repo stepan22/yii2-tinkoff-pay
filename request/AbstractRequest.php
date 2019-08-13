@@ -64,7 +64,9 @@ abstract class AbstractRequest implements RequestInterface
         $this->_dataFields['Password'] = $this->_secretKey;
         ksort($this->_dataFields);
         foreach ($this->_dataFields as $field) {
-            $token .= $field;
+            if (!is_array($field)) {
+                $token .= $field;
+            }
         }
 
         return hash('sha256', $token);
